@@ -54,9 +54,15 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showingNewTask) {
             NewTaskSheet(selectedList: selectedList, isPresented: $showingNewTask)
+                .transaction { t in
+                    t.animation = .spring(response: 0.3, dampingFraction: 0.8)
+                }
         }
         .sheet(isPresented: $showingNewList) {
             NewListSheet(isPresented: $showingNewList)
+                .transaction { t in
+                    t.animation = .spring(response: 0.3, dampingFraction: 0.8)
+                }
         }
     }
 }

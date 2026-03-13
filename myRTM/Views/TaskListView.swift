@@ -221,6 +221,7 @@ struct TaskRowView: View {
                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                     .font(.system(size: 18))
                     .foregroundStyle(task.isCompleted ? Color.green : .secondary)
+                    .symbolEffect(.bounce, value: task.isCompleted)
             }
             .buttonStyle(.plain)
 
@@ -229,7 +230,8 @@ struct TaskRowView: View {
                 Text(task.title.isEmpty ? "New Task" : task.title)
                     .font(.body)
                     .foregroundStyle(task.isCompleted ? .secondary : .primary)
-                    .strikethrough(task.isCompleted)
+                    .strikethrough(task.isCompleted, pattern: .solid, color: .secondary)
+                    .animation(.easeInOut(duration: 0.2), value: task.isCompleted)
 
                 if let dueDate = task.dueDate {
                     Text(dueDate, style: .relative)
@@ -265,6 +267,8 @@ struct TaskRowView: View {
             }
         }
         .padding(.vertical, 4)
+        .background(isHovered ? Color.primary.opacity(0.05) : Color.clear)
+        .animation(.easeInOut(duration: 0.2), value: isHovered)
         .contentShape(Rectangle())
         .onHover { hovering in
             isHovered = hovering
