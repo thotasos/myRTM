@@ -85,14 +85,13 @@ myRTM/
 ## Known Limitations
 
 - No cloud sync (local-only storage)
-- No notifications (yet)
 - No subtasks
 - No recurring tasks
 
 ## Roadmap
 
 - [ ] iCloud sync
-- [ ] Notifications
+- [x] Notifications
 - [ ] Subtasks
 - [ ] Recurring tasks
 - [ ] Menu bar widget
