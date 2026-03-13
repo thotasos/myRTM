@@ -1,8 +1,13 @@
 import SwiftUI
 import SwiftData
+import UserNotifications
 
 @main
 struct myRTMApp: App {
+    init() {
+        NotificationManager.shared.requestAuthorization()
+    }
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             TaskItem.self,

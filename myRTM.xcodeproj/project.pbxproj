@@ -17,6 +17,7 @@
 		9A6695038D76995FC45889E0 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C191F6079E0B246F5EE9B /* TaskListView.swift */; };
 		9F1F1665501021B2D419965C /* NewTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F46ED90FF27119AD7433D /* NewTaskSheet.swift */; };
 		A6B6D5CBD81F23ED73E73477 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9E8BB6C83264ADF4509DC /* ContentView.swift */; };
+		B01E885059BC66B81205FC9E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACD6DF1FF7364B182BD783 /* NotificationManager.swift */; };
 		E86BA624F2BD5C0931EA85FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E32D96FD616766EBAAA2CD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		60E32D96FD616766EBAAA2CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6366BD32C6FC2048D066768B /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		730BCAC21387CF33B3034B43 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		75ACD6DF1FF7364B182BD783 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8D49D91B3F361D6DC4321EA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		99E9E8BB6C83264ADF4509DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A4D311C4668CE29D0FB4A3EF /* myRTM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myRTM.entitlements; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 				B503D3FC1DD998BA54C4D650 /* myRTM */,
 				35ED207DBEB6667A83CE684D /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		35811D3BB883F1F36AC6FD61 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				75ACD6DF1FF7364B182BD783 /* NotificationManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		35ED207DBEB6667A83CE684D /* Products */ = {
@@ -81,6 +91,7 @@
 				67003F6A3B416259164451E0 /* Extensions */,
 				70C114B08C1FFAFE62249042 /* Models */,
 				DC1BBD65A025A48E27BBF52F /* Resources */,
+				35811D3BB883F1F36AC6FD61 /* Services */,
 				CAF87FF9B7E059FFCB86DD38 /* ViewModels */,
 				F450FC6BD019710A383C7955 /* Views */,
 			);
@@ -182,6 +193,7 @@
 				3D7BC6020302445A1D22C4F3 /* Color+Hex.swift in Sources */,
 				A6B6D5CBD81F23ED73E73477 /* ContentView.swift in Sources */,
 				9F1F1665501021B2D419965C /* NewTaskSheet.swift in Sources */,
+				B01E885059BC66B81205FC9E /* NotificationManager.swift in Sources */,
 				99C3857FFDE0D524E61BB956 /* SidebarView.swift in Sources */,
 				80F94615C225BD5386CAC857 /* Tag.swift in Sources */,
 				0F42F52B692B1B4CEB9C05F5 /* TaskDetailView.swift in Sources */,

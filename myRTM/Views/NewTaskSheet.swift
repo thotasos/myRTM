@@ -117,6 +117,12 @@ struct NewTaskSheet: View {
         }
 
         modelContext.insert(task)
+
+        // Schedule notification if due date is set
+        if let dueDate = dueDate, dueDate > Date() {
+            NotificationManager.shared.scheduleNotification(for: task)
+        }
+
         isPresented = false
     }
 }

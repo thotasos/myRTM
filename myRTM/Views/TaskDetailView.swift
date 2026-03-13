@@ -47,7 +47,10 @@ struct TaskDetailView: View {
                         "",
                         selection: Binding(
                             get: { task.dueDate ?? Date() },
-                            set: { task.dueDate = $0 }
+                            set: { newDate in
+                                task.dueDate = newDate
+                                NotificationManager.shared.updateNotification(for: task)
+                            }
                         ),
                         displayedComponents: [.date, .hourAndMinute]
                     )
@@ -55,7 +58,10 @@ struct TaskDetailView: View {
                     .labelsHidden()
 
                     if task.dueDate != nil {
-                        Button(action: { task.dueDate = nil }) {
+                        Button(action: {
+                            task.dueDate = nil
+                            NotificationManager.shared.cancelNotification(for: task)
+                        }) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundStyle(.secondary)
                         }
