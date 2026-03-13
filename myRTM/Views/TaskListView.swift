@@ -14,6 +14,7 @@ struct TaskListView: View {
     @State private var editingTaskId: UUID?
     @State private var debouncedSearchText = ""
     @State private var searchDebounceTimer: Timer?
+    @State private var showingDeleteConfirmation = false
 
     @Query private var allTasks: [TaskItem]
 
@@ -162,6 +163,24 @@ struct TaskListView: View {
                 return
             }
             task.priority = priority
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .deleteTask)) { _ in
+            guard let task = selectedTask else { return }
+            if !task.title.isEmpty {
+                showingDeleteConfirmation = true
+            } else {
+                deleteTask(task)
+            }
+        }
+        .alert("Delete Task?", isPresented: $showingDeleteConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                if let task = selectedTask {
+                    deleteTask(task)
+                }
+            }
+        } message: {
+            Text("Are you sure you want to delete this task?")
         }
     }
 

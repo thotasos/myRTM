@@ -142,6 +142,13 @@ struct myRTMApp: App {
                     NotificationCenter.default.post(name: .focusDueDate, object: nil)
                 }
                 .keyboardShortcut("d", modifiers: .command)
+
+                Divider()
+
+                Button("Delete Task") {
+                    NotificationCenter.default.post(name: .deleteTask, object: nil)
+                }
+                .keyboardShortcut(.delete, modifiers: .command)
             }
         }
     }
@@ -154,4 +161,5 @@ extension Notification.Name {
     static let addTag = Notification.Name("addTag")
     static let newTag = Notification.Name("newTag")
     static let focusDueDate = Notification.Name("focusDueDate")
+    static let deleteTask = Notification.Name("deleteTask")
 }
