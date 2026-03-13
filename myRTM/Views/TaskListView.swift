@@ -76,6 +76,35 @@ struct TaskListView: View {
         }
     }
 
+    var emptyStateIcon: String {
+        guard let list = selectedList else { return "checkmark.circle" }
+        switch list.smartListType {
+        case .completed: return "checkmark.circle"
+        case .today: return "calendar"
+        case .overdue: return "exclamationmark.triangle"
+        default: return "checkmark.circle"
+        }
+    }
+
+    var emptyStateTitle: String {
+        guard let list = selectedList else { return "No tasks" }
+        switch list.smartListType {
+        case .completed: return "All caught up!"
+        case .overdue: return "No overdue tasks"
+        default: return "No tasks"
+        }
+    }
+
+    var emptyStateSubtitle: String {
+        guard let list = selectedList else { return "Press ⌘N to add a task" }
+        switch list.smartListType {
+        case .completed: return "Completed tasks will appear here"
+        case .today: return "You have no tasks due today"
+        case .overdue: return "Great job staying on top of things!"
+        default: return "Press ⌘N to add a task"
+        }
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             // Header
@@ -132,17 +161,24 @@ struct TaskListView: View {
             // Task List
             if sortedTasks.isEmpty {
                 VStack(spacing: 16) {
-                    Image(systemName: "checkmark.circle")
+                    Image(systemName: emptyStateIcon)
                         .font(.system(size: 48))
                         .foregroundStyle(.secondary)
-                    Text("No tasks")
+                    Text(emptyStateTitle)
                         .font(.headline)
                         .foregroundStyle(.secondary)
-                    Text("Press ⌘N to add a task")
+                    Text(emptyStateSubtitle)
                         .font(.subheadline)
                         .foregroundStyle(.tertiary)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(
+                    LinearGradient(
+                        colors: [Color(nsColor: .controlBackgroundColor).opacity(0.5), Color.clear],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
             } else {
                 List(sortedTasks, selection: $selectedTask) { task in
                     TaskRowView(
@@ -152,7 +188,7 @@ struct TaskListView: View {
                         onDelete: { deleteTask(task) }
                     )
                     .tag(task)
-                    .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                    .listRowInsets(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
                 }
                 .listStyle(.plain)
             }
@@ -228,14 +264,14 @@ struct TaskRowView: View {
             // Title
             VStack(alignment: .leading, spacing: 2) {
                 Text(task.title.isEmpty ? "New Task" : task.title)
-                    .font(.body)
+                    .font(.body.weight(.medium))
                     .foregroundStyle(task.isCompleted ? .secondary : .primary)
                     .strikethrough(task.isCompleted, pattern: .solid, color: .secondary)
                     .animation(.easeInOut(duration: 0.2), value: task.isCompleted)
 
                 if let dueDate = task.dueDate {
                     Text(dueDate, style: .relative)
-                        .font(.caption)
+                        .font(.caption.weight(.medium))
                         .foregroundStyle(dueDate < Date() ? .red : .secondary)
                 }
             }
@@ -247,11 +283,11 @@ struct TaskRowView: View {
                 HStack(spacing: 4) {
                     ForEach(task.tags.prefix(3)) { tag in
                         Text(tag.name)
-                            .font(.caption2)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(Color(hex: tag.color).opacity(0.2))
-                            .foregroundStyle(Color(hex: tag.color))
+                            .font(.caption.weight(.medium))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color(hex: tag.color).opacity(0.15))
+                            .foregroundStyle(Color(hex: tag.color).opacity(0.9))
                             .clipShape(Capsule())
                     }
                 }
@@ -267,6 +303,11 @@ struct TaskRowView: View {
             }
         }
         .padding(.vertical, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 4)
+                .fill(isSelected ? Color.accentColor.opacity(0.1) : Color.clear)
+                .padding(.horizontal, -4)
+        )
         .background(isHovered ? Color.primary.opacity(0.05) : Color.clear)
         .animation(.easeInOut(duration: 0.2), value: isHovered)
         .contentShape(Rectangle())

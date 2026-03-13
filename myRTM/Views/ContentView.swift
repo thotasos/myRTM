@@ -40,6 +40,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .animation(.easeInOut(duration: 0.25), value: columnVisibility)
         .navigationSplitViewStyle(.balanced)
         .onAppear {
             if selectedList == nil, let firstList = lists.first {

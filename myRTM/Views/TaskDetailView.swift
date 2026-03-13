@@ -91,11 +91,11 @@ struct TaskDetailView: View {
                             }
                             .buttonStyle(.plain)
                         }
-                        .font(.caption)
+                        .font(.caption.weight(.medium))
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
-                        .background(Color(hex: tag.color).opacity(0.2))
-                        .foregroundStyle(Color(hex: tag.color))
+                        .background(Color(hex: tag.color).opacity(0.15))
+                        .foregroundStyle(Color(hex: tag.color).opacity(0.9))
                         .clipShape(Capsule())
                     }
 
