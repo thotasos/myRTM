@@ -43,6 +43,35 @@ struct myRTMApp: App {
                 let inbox = TaskList(name: "Inbox", color: "#8E8E93", isSmartList: false, isDefault: true, smartListType: nil)
                 context.insert(inbox)
 
+                // Add sample data
+                let workList = TaskList(name: "Work", color: "#007AFF", isSmartList: false, isDefault: false, smartListType: nil)
+                let personalList = TaskList(name: "Personal", color: "#34C759", isSmartList: false, isDefault: false, smartListType: nil)
+                context.insert(workList)
+                context.insert(personalList)
+
+                let urgentTag = Tag(name: "urgent", color: "#FF3B30")
+                let homeTag = Tag(name: "home", color: "#34C759")
+                context.insert(urgentTag)
+                context.insert(homeTag)
+
+                // Create sample tasks
+                let calendar = Calendar.current
+                let today = Date()
+                let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+                let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
+
+                let tasks = [
+                    TaskItem(title: "Review quarterly report", notes: "Check all metrics", dueDate: today, priority: 1, taskList: workList, tags: [urgentTag]),
+                    TaskItem(title: "Email client updates", notes: "Send project status", dueDate: tomorrow, priority: 2, taskList: workList, tags: []),
+                    TaskItem(title: "Buy groceries", notes: "Milk, eggs, bread", dueDate: today, priority: 3, taskList: personalList, tags: [homeTag]),
+                    TaskItem(title: "Schedule dentist appointment", notes: "Check insurance", dueDate: tomorrow, priority: 4, taskList: personalList, tags: [homeTag]),
+                    TaskItem(title: "Finish presentation", notes: "Slides for Monday", dueDate: yesterday, priority: 1, taskList: workList, tags: [urgentTag])
+                ]
+
+                for task in tasks {
+                    context.insert(task)
+                }
+
                 try context.save()
             }
 
@@ -56,6 +85,7 @@ struct myRTMApp: App {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 800, minHeight: 600)
+                .preferredColorScheme(.dark)
         }
         .modelContainer(sharedModelContainer)
         .windowStyle(.automatic)
