@@ -8,17 +8,21 @@ struct TaskListView: View {
     @Binding var selectedTask: TaskItem?
     let allTags: [Tag]
     @Binding var showingNewTask: Bool
+    @Binding var searchText: String
 
     @State private var sortOrder = TaskSortOrder.priority
     @State private var editingTaskId: UUID?
+    @State private var debouncedSearchText = ""
+    @State private var searchDebounceTimer: Timer?
 
     @Query private var allTasks: [TaskItem]
 
-    init(selectedList: TaskList?, selectedTask: Binding<TaskItem?>, allTags: [Tag], showingNewTask: Binding<Bool>) {
+    init(selectedList: TaskList?, selectedTask: Binding<TaskItem?>, allTags: [Tag], showingNewTask: Binding<Bool>, searchText: Binding<String>) {
         self.selectedList = selectedList
         self._selectedTask = selectedTask
         self.allTags = allTags
         self._showingNewTask = showingNewTask
+        self._searchText = searchText
 
         var descriptor = FetchDescriptor<TaskItem>()
         descriptor.sortBy = [SortDescriptor(\.priority), SortDescriptor(\.createdAt, order: .reverse)]
@@ -28,24 +32,36 @@ struct TaskListView: View {
     var filteredTasks: [TaskItem] {
         guard let list = selectedList else { return [] }
 
+        var tasks: [TaskItem]
+
         if list.isSmartList {
             switch list.smartListType {
             case .today:
                 let calendar = Calendar.current
                 let startOfDay = calendar.startOfDay(for: Date())
                 let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-                return allTasks.filter { !$0.isCompleted && ($0.dueDate ?? .distantPast) >= startOfDay && ($0.dueDate ?? .distantFuture) < endOfDay }
+                tasks = allTasks.filter { !$0.isCompleted && ($0.dueDate ?? .distantPast) >= startOfDay && ($0.dueDate ?? .distantFuture) < endOfDay }
             case .overdue:
                 let today = Calendar.current.startOfDay(for: Date())
-                return allTasks.filter { !$0.isCompleted && ($0.dueDate ?? .distantFuture) < today }
+                tasks = allTasks.filter { !$0.isCompleted && ($0.dueDate ?? .distantFuture) < today }
             case .completed:
-                return allTasks.filter { $0.isCompleted }
+                tasks = allTasks.filter { $0.isCompleted }
             case .all, .none:
-                return allTasks.filter { !$0.isCompleted }
+                tasks = allTasks.filter { !$0.isCompleted }
             }
         } else {
-            return allTasks.filter { $0.taskList?.id == list.id && !$0.isCompleted }
+            tasks = allTasks.filter { $0.taskList?.id == list.id && !$0.isCompleted }
         }
+
+        // Apply search filter
+        if !debouncedSearchText.isEmpty {
+            tasks = tasks.filter { task in
+                task.title.localizedCaseInsensitiveContains(debouncedSearchText) ||
+                task.notes.localizedCaseInsensitiveContains(debouncedSearchText)
+            }
+        }
+
+        return tasks
     }
 
     var sortedTasks: [TaskItem] {
@@ -69,6 +85,23 @@ struct TaskListView: View {
 
                 Spacer()
 
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.secondary)
+
+                    TextField("Search tasks...", text: $searchText)
+                        .textFieldStyle(.plain)
+                        .frame(width: 150)
+
+                    if !searchText.isEmpty {
+                        Button(action: { searchText = "" }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundStyle(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+
                 Menu {
                     Button("Priority") { sortOrder = .priority }
                     Button("Due Date") { sortOrder = .dueDate }
@@ -86,6 +119,12 @@ struct TaskListView: View {
             }
             .padding()
             .background(Color(nsColor: .controlBackgroundColor))
+            .onChange(of: searchText) { _, newValue in
+                searchDebounceTimer?.invalidate()
+                searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { _ in
+                    debouncedSearchText = newValue
+                }
+            }
 
             Divider()
 

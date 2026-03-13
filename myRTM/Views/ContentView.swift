@@ -26,7 +26,8 @@ struct ContentView: View {
                 selectedList: selectedList,
                 selectedTask: $selectedTask,
                 allTags: allTags,
-                showingNewTask: $showingNewTask
+                showingNewTask: $showingNewTask,
+                searchText: $searchText
             )
             .navigationSplitViewColumnWidth(min: 300, ideal: 400, max: 600)
         } detail: {
