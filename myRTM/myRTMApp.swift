@@ -125,6 +125,23 @@ struct myRTMApp: App {
                     NotificationCenter.default.post(name: .setPriority, object: 4)
                 }
                 .keyboardShortcut("4", modifiers: .command)
+
+                Divider()
+
+                Button("Add Tag") {
+                    NotificationCenter.default.post(name: .addTag, object: nil)
+                }
+                .keyboardShortcut("t", modifiers: .command)
+
+                Button("New Tag") {
+                    NotificationCenter.default.post(name: .newTag, object: nil)
+                }
+                .keyboardShortcut("t", modifiers: [.command, .shift])
+
+                Button("Set Due Date") {
+                    NotificationCenter.default.post(name: .focusDueDate, object: nil)
+                }
+                .keyboardShortcut("d", modifiers: .command)
             }
         }
     }
@@ -134,4 +151,7 @@ extension Notification.Name {
     static let newTask = Notification.Name("newTask")
     static let newList = Notification.Name("newList")
     static let setPriority = Notification.Name("setPriority")
+    static let addTag = Notification.Name("addTag")
+    static let newTag = Notification.Name("newTag")
+    static let focusDueDate = Notification.Name("focusDueDate")
 }

@@ -167,6 +167,16 @@ struct TaskDetailView: View {
             }
         }
         .formStyle(.grouped)
+        .onReceive(NotificationCenter.default.publisher(for: .addTag)) { _ in
+            showingTagPicker = true
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .newTag)) { _ in
+            showingTagPicker = true
+            newTagName = ""
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .focusDueDate)) { _ in
+            // Focus is automatic when view appears, just ensure picker is visible
+        }
     }
 
     private func removeTag(_ tag: Tag) {
