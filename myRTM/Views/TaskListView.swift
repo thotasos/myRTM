@@ -156,6 +156,13 @@ struct TaskListView: View {
                 .listStyle(.plain)
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .setPriority)) { notification in
+            guard let priority = notification.object as? Int,
+                  let task = selectedTask else {
+                return
+            }
+            task.priority = priority
+        }
     }
 
     private func toggleComplete(_ task: TaskItem) {

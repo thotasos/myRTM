@@ -92,6 +92,8 @@ struct myRTMApp: App {
         .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(after: .newItem) {
+                Divider()
+
                 Button("New Task") {
                     NotificationCenter.default.post(name: .newTask, object: nil)
                 }
@@ -101,6 +103,28 @@ struct myRTMApp: App {
                     NotificationCenter.default.post(name: .newList, object: nil)
                 }
                 .keyboardShortcut("n", modifiers: [.command, .shift])
+
+                Divider()
+
+                Button("Priority 1 (Highest)") {
+                    NotificationCenter.default.post(name: .setPriority, object: 1)
+                }
+                .keyboardShortcut("1", modifiers: .command)
+
+                Button("Priority 2 (High)") {
+                    NotificationCenter.default.post(name: .setPriority, object: 2)
+                }
+                .keyboardShortcut("2", modifiers: .command)
+
+                Button("Priority 3 (Low)") {
+                    NotificationCenter.default.post(name: .setPriority, object: 3)
+                }
+                .keyboardShortcut("3", modifiers: .command)
+
+                Button("Priority 4 (None)") {
+                    NotificationCenter.default.post(name: .setPriority, object: 4)
+                }
+                .keyboardShortcut("4", modifiers: .command)
             }
         }
     }
@@ -109,4 +133,5 @@ struct myRTMApp: App {
 extension Notification.Name {
     static let newTask = Notification.Name("newTask")
     static let newList = Notification.Name("newList")
+    static let setPriority = Notification.Name("setPriority")
 }
