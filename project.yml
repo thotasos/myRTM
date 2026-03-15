@@ -34,3 +34,16 @@ targets:
       path: myRTM/myRTM.entitlements
       properties:
         com.apple.security.app-sandbox: false
+
+  myRTMTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - myRTMTests
+    dependencies:
+      - target: myRTM
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.thotas.myRTMTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/myRTM.app/Contents/MacOS/myRTM"
+        BUNDLE_LOADER: "$(TEST_HOST)"

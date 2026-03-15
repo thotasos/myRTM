@@ -9,23 +9,40 @@
 /* Begin PBXBuildFile section */
 		0F42F52B692B1B4CEB9C05F5 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6366BD32C6FC2048D066768B /* TaskDetailView.swift */; };
 		10D92D3DCF8553E8EA8A1863 /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231A36AA5DBEE60CED7EE03F /* TaskList.swift */; };
+		1D32B2D37D7236E9FB438C2B /* TaskItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C3DFE8AF8AA46D97766C48 /* TaskItemTests.swift */; };
 		3D7BC6020302445A1D22C4F3 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BCAC21387CF33B3034B43 /* Color+Hex.swift */; };
 		53ABB8BF7ACD7BCC4727FB0B /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBEB5E67EB062F8908DEDAA /* TaskItem.swift */; };
 		80F94615C225BD5386CAC857 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363C43CCC45B00081F5E2C9 /* Tag.swift */; };
 		8705D3F75A0348F3CE24EBCC /* myRTMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2D3A604B8A3FBC53A22B7 /* myRTMApp.swift */; };
+		969965AD4BA3D9C7B204D66A /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA50DC587FCD54887649DAB /* TagTests.swift */; };
 		99C3857FFDE0D524E61BB956 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085A3B5A9842CB7F2913457D /* SidebarView.swift */; };
 		9A6695038D76995FC45889E0 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C191F6079E0B246F5EE9B /* TaskListView.swift */; };
 		9F1F1665501021B2D419965C /* NewTaskSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F46ED90FF27119AD7433D /* NewTaskSheet.swift */; };
 		A6B6D5CBD81F23ED73E73477 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9E8BB6C83264ADF4509DC /* ContentView.swift */; };
 		B01E885059BC66B81205FC9E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ACD6DF1FF7364B182BD783 /* NotificationManager.swift */; };
+		C46D36BE03F01DAC06772780 /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780ADB03F2539925A32B0B1 /* ColorHexTests.swift */; };
+		E28CD6DBE3DEE8A5E0AC5CC2 /* TaskListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351D2F9C1453CEAF8EE7D2BC /* TaskListTests.swift */; };
 		E86BA624F2BD5C0931EA85FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60E32D96FD616766EBAAA2CD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F68639527F30D9971871FBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B743A6FF33CFA1C9342E6995 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9AE1A9718415A1CE3B62B4E;
+			remoteInfo = myRTM;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		085A3B5A9842CB7F2913457D /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		231A36AA5DBEE60CED7EE03F /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		3363C43CCC45B00081F5E2C9 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		351D2F9C1453CEAF8EE7D2BC /* TaskListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTests.swift; sourceTree = "<group>"; };
+		4780ADB03F2539925A32B0B1 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
 		49A2D3A604B8A3FBC53A22B7 /* myRTMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRTMApp.swift; sourceTree = "<group>"; };
+		4BA50DC587FCD54887649DAB /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
 		5B2F46ED90FF27119AD7433D /* NewTaskSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskSheet.swift; sourceTree = "<group>"; };
 		60E32D96FD616766EBAAA2CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6366BD32C6FC2048D066768B /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
@@ -37,6 +54,8 @@
 		A68ED0248871C3DD3F693170 /* myRTM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRTM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B95C191F6079E0B246F5EE9B /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		BDBEB5E67EB062F8908DEDAA /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		BFD53B164261B9BFC052EDAE /* myRTMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myRTMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2C3DFE8AF8AA46D97766C48 /* TaskItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -44,8 +63,20 @@
 			isa = PBXGroup;
 			children = (
 				B503D3FC1DD998BA54C4D650 /* myRTM */,
+				2D639AC7F8B9595408215932 /* myRTMTests */,
 				35ED207DBEB6667A83CE684D /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		2D639AC7F8B9595408215932 /* myRTMTests */ = {
+			isa = PBXGroup;
+			children = (
+				4780ADB03F2539925A32B0B1 /* ColorHexTests.swift */,
+				4BA50DC587FCD54887649DAB /* TagTests.swift */,
+				E2C3DFE8AF8AA46D97766C48 /* TaskItemTests.swift */,
+				351D2F9C1453CEAF8EE7D2BC /* TaskListTests.swift */,
+			);
+			path = myRTMTests;
 			sourceTree = "<group>";
 		};
 		35811D3BB883F1F36AC6FD61 /* Services */ = {
@@ -60,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A68ED0248871C3DD3F693170 /* myRTM.app */,
+				BFD53B164261B9BFC052EDAE /* myRTMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,6 +178,24 @@
 			productReference = A68ED0248871C3DD3F693170 /* myRTM.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FD296503DAFE5429D10A2A51 /* myRTMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25B5D3BC546A90F981911C89 /* Build configuration list for PBXNativeTarget "myRTMTests" */;
+			buildPhases = (
+				674C3471D25431BDDE46A3DD /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C55A4756646B90A0A4403B61 /* PBXTargetDependency */,
+			);
+			name = myRTMTests;
+			packageProductDependencies = (
+			);
+			productName = myRTMTests;
+			productReference = BFD53B164261B9BFC052EDAE /* myRTMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,6 +220,7 @@
 			projectRoot = "";
 			targets = (
 				B9AE1A9718415A1CE3B62B4E /* myRTM */,
+				FD296503DAFE5429D10A2A51 /* myRTMTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,7 +255,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		674C3471D25431BDDE46A3DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C46D36BE03F01DAC06772780 /* ColorHexTests.swift in Sources */,
+				969965AD4BA3D9C7B204D66A /* TagTests.swift in Sources */,
+				1D32B2D37D7236E9FB438C2B /* TaskItemTests.swift in Sources */,
+				E28CD6DBE3DEE8A5E0AC5CC2 /* TaskListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C55A4756646B90A0A4403B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9AE1A9718415A1CE3B62B4E /* myRTM */;
+			targetProxy = 0F68639527F30D9971871FBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5F5A3E52572B4F3B92391A8E /* Release */ = {
@@ -292,6 +362,22 @@
 			};
 			name = Debug;
 		};
+		8CDD86D26B9D844E6D820A1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thotas.myRTMTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myRTM.app/Contents/MacOS/myRTM";
+			};
+			name = Release;
+		};
 		91C09157E01D3F1E6B432E35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -370,9 +456,34 @@
 			};
 			name = Debug;
 		};
+		FFA50B46F48C65413D5DB9A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thotas.myRTMTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myRTM.app/Contents/MacOS/myRTM";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		25B5D3BC546A90F981911C89 /* Build configuration list for PBXNativeTarget "myRTMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA50B46F48C65413D5DB9A9 /* Debug */,
+				8CDD86D26B9D844E6D820A1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		897D1D37C77DD1AF68C81624 /* Build configuration list for PBXProject "myRTM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
